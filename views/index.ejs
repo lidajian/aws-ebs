@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+    <h1>Launch an environment</h1>
+	<form id="uploadForm" enctype="multipart/form-data" method="post" action="/api/awsebs">
+        <input type="file" name="userFile" /><br>
+        userid: <input type="text" name="userid" /><br>
+        <select name="platform" form="uploadForm">
+            <option value="nodejs">Node.js</option>
+            <option value="java">Java</option>
+            <option value="go">Go</option>
+            <option value="ruby">Ruby</option>
+            <option value="php">PHP</option>
+            <option value="python">Python</option>
+            <option value="tomcat">Tomcat</option>
+            <option value="dotnet">.NET (Windows/IIS)</option>
+            <option value="packer">Packer</option>
+            <option value="glassfish">Glassfish</option>
+        </select>
+        <input type="submit" value="Launch" name="submit"><br>
+    </form>
+    <h1>Close an environment</h1>
+    <form id="close" action="/api/awsebsd">
+        id: <input type="text" name="id" /><br>
+        <input type="submit" value="Close" name="submit"><br>
+    </form>
+    <h1>Active environment id</h1>
+    <% for (row in rows) {   
+        if (rows[row].length > 0) { %>
+        <a href="i/<%= row %>"><%= row %></a><br>
+    <% }} %>
+</body>
+</html>
